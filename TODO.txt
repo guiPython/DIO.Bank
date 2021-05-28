@@ -1,0 +1,7 @@
+// Criar a logica para o calculo das taxas para os servicos TED E DOC para cada modelo de conta.
+
+// Criar a FactoryException 
+
+// Criar testes unitarios para o codigo dos servicos e metodos da classe ContaCorrente
+
+// Criar Servicos para classe ContaPoupanca e seus modelos de servico.

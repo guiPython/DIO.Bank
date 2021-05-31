@@ -6,8 +6,8 @@ namespace DIO.Bank.Entities
     {
         public string CPF { get; set; }
         public DateTime DataNascimento { get; set; }
-        public ClienteFisico(int id, string nome, DateTime dataRegistro, string cpf, DateTime dataNascimento)
-            : base(id, nome, dataRegistro)
+        public ClienteFisico(string nome, DateTime dataRegistro, string cpf, DateTime dataNascimento)
+            : base(nome, dataRegistro)
         {
             CPF = cpf;
             DataNascimento = dataNascimento;

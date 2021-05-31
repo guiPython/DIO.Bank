@@ -1,4 +1,5 @@
 using DIO.Bank.Interfaces;
+using DIO.Bank.Exceptions;
 using DIO.Bank.Entities;
 using System;
 
@@ -6,12 +7,18 @@ namespace DIO.Bank.Services
 {
     public class ContaCorrenteService : IContaCorrenteService
     {
-        private readonly ContaCorrente contaCorrente;
+        private ContaCorrente _contaCorrente;
+        public ContaCorrente contaCorrente { get => contaCorrente; set => _contaCorrente = value; }
         private readonly ITaxaContaCorrenteService taxaContaCorrente;
-        public ContaCorrenteService(ContaCorrente _contaCorrente, ITaxaContaCorrenteService _taxaContaCorrente)
+
+        public ContaCorrenteService(ITaxaContaCorrenteService _taxaContaCorrente)
         {
             taxaContaCorrente = _taxaContaCorrente;
-            contaCorrente = _contaCorrente;
+        }
+        public ContaCorrenteService(ContaCorrente contaCorrente, ITaxaContaCorrenteService _taxaContaCorrente)
+        {
+            taxaContaCorrente = _taxaContaCorrente;
+            _contaCorrente = contaCorrente;
         }
         public void DOC(decimal valorTransferencia, IConta contaDestino)
         {
@@ -21,9 +28,13 @@ namespace DIO.Bank.Services
                 contaCorrente.Sacar(valorTransferencia + taxaContaDOC);
                 contaDestino.Depositar(valorTransferencia);
             }
-            catch (Exception)
+            catch (FactoryException)
             {
-                throw new Exception();
+                throw new ServiceException("");
+            }
+            catch (EntityException)
+            {
+                throw new ServiceException("");
             }
         }
 
@@ -35,9 +46,13 @@ namespace DIO.Bank.Services
                 contaCorrente.Sacar(valorTransferencia + taxaContaTED);
                 contaDestino.Depositar(valorTransferencia);
             }
-            catch (Exception)
+            catch (FactoryException)
             {
-                throw new Exception();
+                throw new ServiceException("");
+            }
+            catch (EntityException)
+            {
+                throw new ServiceException("");
             }
         }
     }

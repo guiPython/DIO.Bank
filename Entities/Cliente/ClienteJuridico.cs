@@ -6,8 +6,8 @@ namespace DIO.Bank.Entities
     {
         public string CNPJ { get; private set; }
         public DateTime DataCriacao { get; private set; }
-        public ClienteJuridico(int id, string nome, DateTime dataRegistro, string cnpj, DateTime dataCriacao)
-            : base(id, nome, dataRegistro)
+        public ClienteJuridico(string nome, DateTime dataRegistro, string cnpj, DateTime dataCriacao)
+            : base(nome, dataRegistro)
         {
             CNPJ = cnpj;
             DataCriacao = dataCriacao;

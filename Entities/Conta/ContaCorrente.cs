@@ -28,6 +28,9 @@ namespace DIO.Bank.Entities
             else Saldo += valorDeposito;
         }
 
-
+        public override string ToString()
+        {
+            return base.ToString();
+        }
     }
 }

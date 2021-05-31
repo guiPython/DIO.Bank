@@ -3,7 +3,7 @@ using DIO.Bank.Interfaces;
 using DIO.Bank.Enums;
 using DIO.Bank.Exceptions;
 
-namespace DIO.Bank.Factorys
+namespace DIO.Bank.Factories
 {
     public class CalculoTaxaContaCorrenteFactory : ITaxaContaCorrenteService
     {
